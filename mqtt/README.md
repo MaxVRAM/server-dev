@@ -91,7 +91,7 @@ _This will print a bunch of hex values, with something like "t=19024" at the end
 _We'll now setup the script to pull the readings from the sensor and publish it via MQTT._  
   
 1. **Navigate to the directory we'll store the python script in:**  
-`cd /usr/local/bin/mqtt-temp.py`  
+`cd /usr/local/bin`  
 
 2. **Pull the mqtt-temp.py script:**  
 `sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.py`  
