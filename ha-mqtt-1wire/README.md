@@ -1,16 +1,16 @@
 # 1-Wire Sensor from Remote Pi to Home Assistant via MQTT  
 This setup will get readings from a 1-wire temperature sensor (like [these](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor") from Little Bird) hooked up to a Raspberry Pi and publish them to a remote Home Assistant server via MQTT.  
 
-### A Quick MQTT Intro
-MQTT is a protocol for networked message transmission that has two major components:  
-* Publisher, which sends the MQTT messages to the Broker
-* Broker, which can recieve messages from multiple Publishers. It's like a message hub.
-
 <br>
 
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_pi.jpg)
 
 <br>
+
+### A Quick MQTT Intro
+MQTT is a protocol for networked message transmission that has two major components:  
+* Publisher, which sends the MQTT messages to the Broker
+* Broker, which can recieve messages from multiple Publishers. It's like a message hub.  
 
 ### Process and Goals
 We will set up a Raspberry Pi to read values from 1-wire temperature sensor. The Pi will act as an MQTT Publisher, and will send the temperature readings to a Broker that we set up on our Home Assistant server, which exists on a remote machine. Finally, we grab those values in Node-RED (in Home Assistant) and create temperature entities that we can use anywhere in Home Assistant.  
