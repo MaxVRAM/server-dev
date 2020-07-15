@@ -108,8 +108,13 @@ cd /sys/bus/w1/devices
 ls
 ```  
 
-_The sensor will show up as a directory with a unique device code starting with "28-". For example "28-00000482b243"._  
+_The sensor will show up as a directory with a unique device code starting with "28-". My sensor was at "28-03109794634b"._  
 
+```bash
+pi@raspberrypi:/sys/bus/w1/devices $ ls
+28-03109794634b  w1_bus_master1
+```
+  
 8. Enter the unique device directory: _Since we've only connected a single 1-wire sensor, we can use the wildcard "?"_  
 ```bash
 cd 28-?
@@ -121,7 +126,13 @@ ls
 cat w1_slave
 ```  
 
-_This will print a bunch of hex values, with something like "t=19024" at the end. This is your temperature reading! 19°C in this case._  
+_This will print a bunch of hex values, with something like "t=14500" at the end. This is your temperature reading! 14.5°C for me._  
+
+```bash
+pi@raspberrypi:/sys/bus/w1/devices/28-03109794634b $ cat w1_slave
+e8 00 55 05 7f a5 a5 66 16 : crc=16 YES
+e8 00 55 05 7f a5 a5 66 16 t=14500
+``` 
   
 <br><br>
   
