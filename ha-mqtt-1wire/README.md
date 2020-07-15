@@ -8,7 +8,7 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 <br>
 
 ### Prerequisites
-* Home Assistant Server running on one system
+* Home Assistant (HA) Server running on one system
 * A separate Raspberry Pi running some form of Debian distro
 * A 1-Wire sensor  
 
@@ -26,9 +26,9 @@ MQTT is a protocol for networked message transmission that has two major compone
 ### What are we going to do?
 * Set up a Raspberry Pi to read a value from a 1-wire temperature sensor.
 * Configure the Pi as an MQTT Publisher that will send the temperature reading to a Broker.
-* Set up a broker on our remote Home Assistant server to listen to the sensor data.
-* Grab the value in Node-RED (on Home Assistant)
-* Use a temperature entity using that value, which we can put to use anywhere in Home Assistant.  
+* Set up a broker on our remote HA server to listen to the sensor data.
+* Grab the value in Node-RED (on HA)
+* Make a temperature entity using that value, which we can put to use anywhere in HA.  
 * Create a LoveLace card to display our temperature data.
 
 I personally use these values to automate "dumb" heaters (without thermostats), allowing me to control my room's temperature by turning the heaters on and off depending on my desired temperature using smart switches.  
@@ -44,7 +44,7 @@ I personally use these values to automate "dumb" heaters (without thermostats), 
 I was using the following setup to create this guide:  
 * Raspberry Pi W running [Raspberry Pi OS (32-bit) Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 * 1-Wire Temperature Sensor from [Little Bird](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor"). Similar to the DS18B2, only with pullup resistor already fitted.
-* Home Assistant setup on a remote Raspberry Pi using [HASS.IO](https://www.home-assistant.io/hassio/)
+* HA setup on a remote Raspberry Pi using [HASS.IO](https://www.home-assistant.io/hassio/)
 
 <br>
 
@@ -66,7 +66,7 @@ Let's get this show on the road!
 
 <br>
 
-## Setting up Mosquitto Broker on Home Assistant
+## Setting up Mosquitto Broker on HA
 First we'll setup the receiving end of our MQTT system in HA.
 
 <br>
@@ -229,13 +229,13 @@ Jul 15 11:40:19 raspberrypi systemd[1]: Started MQTT Temperature sensor.
 
 <br>
 
-Congratulations! You're now publishing the sensor data to your broker. Let's configure an entity in Home Assistant to read the value.  
+Congratulations! You're now publishing the sensor data to your broker. Let's configure an entity in HA to read the value.  
 
 <br>
 <br>
 
 ## Setup Home Asistant Entity Using Node-RED  
-Now that the remote Raspberry Pi and sensor are setup, we can finally focus on the Home Assistant side of things.
+Now that the remote Raspberry Pi and sensor are setup, we can finally focus on the HA side of things.
 
 1. First, let's check that HA is receiving the temperature value by going to "Supervisor" > "Mosquitto Broker" > "Log".  
 > _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
@@ -243,18 +243,18 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
 <br>
 
 ### Installing Node-RED integrations  
-Node-RED is an awesome node-based programming environment we can use inside Home Assistant to expand its functionality.  
+Node-RED is an awesome node-based programming environment we can use inside HA to expand its functionality.  
 
 2. Install the base Node-RED add-on for HA by clicking "Supervisor" > "Add-on Store" then search for "Node-RED" and follow the installation guide.  
 3. If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites).  
 4. Click on the HACS tab in the left menu and search for "Node-RED". We're now installing an extra integration of Node-RED so we can create entities.  
 5. Click on the Node-RED badge and install.  
-6. Restart Home Assistant. You should now have a Node-RED tab on the left menu.  
+6. Restart HA. You should now have a Node-RED tab on the left menu.  
 
 <br>
 
 ### Building the Node-RED flow and HA entity  
-Once Node-RED is properly installed, we can create what's called a Node-RED "flow". This is effectively a script that we can deploy on our Home Assistant server. We're now going to create the code to read the sensor data entering Mosquitto from our Pi and generate an HA entity from the value.
+Once Node-RED is properly installed, we can create what's called a Node-RED "flow". This is effectively a script that we can deploy on our HA server. We're now going to create the code to read the sensor data entering Mosquitto from our Pi and generate an HA entity from the value.
 
 7. Open up Node-RED, and in the top right corner click the hamburger menu and select "import".  
 8. Copy the following block and paste it into the Node-RED import window:  
@@ -384,7 +384,7 @@ Once Node-RED is properly installed, we can create what's called a Node-RED "flo
   - device_class: temperature (More on this in a moment) 
   - unit_of_measurement: °C (You'll need to do some math in your python script if you want to convert this value to F  
 
-> _In Home Assistant, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)._  
+> _In HA, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)._  
 12. Hit "okay" to save.  
 
 <br>
@@ -400,7 +400,7 @@ _An example of what having 3 sensors connected would look like in Node-RED._
 
 <br>
 
-14. Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.  
+14. Check if the entity is listed in your HA entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.  
 15. Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This will display a graph with the sensor's readings.  
 
 <br>
@@ -432,7 +432,7 @@ unit: C
 
 <br>
 
-For something a little more advanced, here's a Home Assistant card of my own as a reference to extend your own dashboard. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
+For something a little more advanced, here's an HA card of my own as a reference to extend your own dashboard. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
 
 <br>
 
