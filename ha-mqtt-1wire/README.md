@@ -238,6 +238,8 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
 <br>
 
 ### Installing Node-RED integrations  
+Node-RED is an awesome node-based programming environment we can use inside Home Assistant to expand its functionality.  
+
 2. Install the base Node-RED add-on for HA by clicking "Supervisor" > "Add-on Store" then search for "Node-RED" and follow the installation guide.  
 3. If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites).  
 4. Click on the HACS tab in the left menu and search for "Node-RED". We're now installing an extra integration of Node-RED so we can create entities.  
@@ -247,6 +249,8 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
 <br>
 
 ### Building the Node-RED flow and HA entity  
+Once Node-RED is properly installed, we can create what's called a Node-RED "flow". This is effectively a script that we can deploy on our Home Assistant server. We're now going to create the code to read the sensor data entering Mosquitto from our Pi and generate an HA entity from the value.
+
 7. Open up Node-RED, and in the top right corner click the hamburger menu and select "import".  
 8. Copy the following block and paste it into the Node-RED import window:  
 
