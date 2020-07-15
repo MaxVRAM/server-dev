@@ -262,6 +262,8 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 7. Open up **Node-RED** (it should be an item in the left menu), then click the hamburger menu in the icon top right corner and select **import**.  
 8. Copy the following block and paste it into the Node-RED **import** window:  
 
+<br>
+
 <details>
   <summary>Click to display the Node-RED flow code...</summary>
   
@@ -365,6 +367,8 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 ```
   
 </details>
+
+<br>
 
 > After pasting this code, you should have a flow like this (**how many dudes you know flow like this??**):  
 
