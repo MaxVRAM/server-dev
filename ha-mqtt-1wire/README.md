@@ -472,5 +472,7 @@ type: 'custom:mini-graph-card'
 </details>
 
 <br>
+<br>
 
-Happy home automating!!
+
+### Happy home automating!!
