@@ -11,7 +11,7 @@ In this guide, we'll be setting up a Raspberry Pi to read values from 1-wire tem
 
 <br>
 
-![Temperature Sensor](lb_temp_sensor.jpg)
+![Temperature Sensor](images/lwire_pi.jpg)
 
 
 ### Test Setup  
@@ -127,7 +127,7 @@ cd /usr/local/bin
 
 2. Pull the mqtt-temp.py script:  
 ```bash
-sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.py
+sudo wget https://github.com/MaxVRAM/server-dev/raw/master/ha-mqtt-1wire/mqtt-temp.py
 ```  
 
 3. Open the script with nano or vim:  
@@ -155,7 +155,7 @@ cd /lib/systemd/system
 
 7. Pull the mqtt-temp.service script:  
 ```bash
-sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.service
+sudo wget https://github.com/MaxVRAM/server-dev/raw/master/ha-mqtt-1wire/mqtt-temp.service
 ```  
 _You shouldn't need to make any changes here_  
 
@@ -239,7 +239,7 @@ _If the MQTT node and Mosquitto broker are configured correctly, you'll see a gr
 
 <br>
 
-![Temperature Sensor](node-red-mqtt.jpg)  
+![Temperature Sensor](images/node-red-mqtt.jpg)  
 _An example of what having 3 sensors would look like in Node-RED._ 
 <br>
 
@@ -283,7 +283,7 @@ type: 'custom:mini-graph-card'
 ```  
 <br>
 
-![Temperature Sensor](climate_ha.jpg)
+![Temperature Sensor](images/climate_ha.jpg)
 
 <br>
 
