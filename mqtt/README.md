@@ -149,8 +149,44 @@ Let's check Home Assistant to finish the setup.
 1. **First check that HA is receiving the value by going back to "Supervisor" > "Mosquitto Broker" > "Log".**  
 _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
 
-2. **If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites)**  
-3. **In HA, click on the HACS tab in the left menu and search for "Node-RED"**  
-4. **Click on the Node-RED badge and install**  
-5. **Restart Home Assistant. You should now have a Node-Red tab on the left menu**  
-6. **Open Node-Red and **
+2. **If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites).**  
+3. **In HA, click on the HACS tab in the left menu and search for "Node-RED".**  
+4. **Click on the Node-RED badge and install.**  
+5. **Restart Home Assistant. You should now have a Node-Red tab on the left menu.**  
+6. **In your browser, open the [node red flow json](https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-node-red-receiver.json) and copy the entire block.**  
+7. **Back in HA, open up Node-RED and in the top right corner click the hamburger menu and select "import".**  
+8. **Paste the block you copied and hit "import".**  
+9. **The node on the left is the MQTT node, double click it and add a server with the details you entered when you first installed Mosquito. For instance:**  
+```
+Connections Tab
+---------------
+Server: localhost (since Mosquitto is running locally on HA)
+Port: 1833
+Client ID: node-red-input
+
+Security Tab
+------------
+Username: <the broker user you created at the start>
+Password: <the broker password you created at the start>
+```  
+10. **Hit "update" to save your server settings, then make sure the server you just configured is selected, and the topic is the same string you entered in the python script on your Pi. Hit "done"**  
+11. **The node on the right is the Entity node, this will setup an entity for you to use on your LoveLace dashboard or anywhere else in HA. Double click it and check the following, then hit "okay" to save: **  
+```
+Name: (feel free to change the node's name for your convenience)
+Server: Home Assistant
+Type: Sensor
+State: <msg.> payload
+
+name: room_temperature (This needs to be unqiue. With this name, the entity will be accessible in HA as "sensor.room_temperature")
+device_class: temperature (More on this in a moment)
+icon: mdi:termometer
+unit_of_measurement: °C (You'll need to do some math in your python script if you want to convert this value to F
+```  
+_In Home Assistant, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)_  
+
+12. **Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.**  
+_If the MQTT node and Mosquitto broker are configured correctly, you'll see a green square and "connected" under the node_  
+_Likewise, the temperature reading and time of the last message should be displayed under the entity node_  
+13. **Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.**  
+14. **Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This should display a graph with your readings.**  
+15. **Now you can add the entity to your LoveLace dashboard like any other input**  
