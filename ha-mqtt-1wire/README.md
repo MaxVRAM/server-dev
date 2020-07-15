@@ -16,9 +16,7 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 
 <br>
 
-### MQTT?
-An extremely short background on MQTT to get started:  
-
+### MQTT?  
 MQTT is a protocol for networked message transmission that has two major components:  
 * Publisher, which sends the MQTT messages to the Broker
 * Broker, which can recieve messages from multiple Publishers. It's like a message hub.  
