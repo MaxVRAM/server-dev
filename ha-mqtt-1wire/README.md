@@ -91,7 +91,7 @@ Now, let's get the remote Raspberry Pi set up with some dependencies, then check
 
 <br>
 
-1. Install the 1-wire sensor to the Pi's GPIOs as pictured at the top of this page.
+1. Physically install the 1-wire sensor to the Pi's GPIOs as pictured at the top of this page. If you're using a bare sensor without the handy plug-in board, you'll most likely need to do some simple electronic circuit setup to get rolling. We're not covering that here, so I'm assuming you've got that side of things sorted.  
 2. Boot up the Pi and enable 1-Wire using the following command:  
 ```bash
 sudo dtoverlay w1-gpio
