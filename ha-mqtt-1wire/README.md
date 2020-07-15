@@ -1,5 +1,5 @@
 # 1-Wire Sensor from Remote Pi to Home Assistant via MQTT  
-This setup will get readings from a 1-wire temperature sensor (like [this](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor") super convenient one from Little Bird Electronics) hooked up to a Raspberry Pi, then publish the value to a remote Home Assistant server via MQTT.  
+This setup will get readings from a 1-wire temperature sensor hooked up to a Raspberry Pi, then publish the value to a remote Home Assistant server via MQTT.  
 
 <br>
 
@@ -10,7 +10,7 @@ This setup will get readings from a 1-wire temperature sensor (like [this](https
 ### Prerequisites
 * Home Assistant (HA) Server running on a system within your local network (I'm running HA on a Pi 4 using [hass.io](https://www.home-assistant.io/hassio/))
 * A separate Raspberry Pi running some form of Debian distro (I'm using a Pi Zero W running [Raspberry Pi OS Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/))
-* A 1-Wire sensor. ([I'm using this one](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m))
+* A 1-Wire sensor (like [this](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor") super convenient one from [Little Bird Electronics](https://www.littlebird.com.au/) (Australia), pictured above)
 
 > Apart from the above we're going to build this from scratch. You'll just need sudo/admin access on these systems.  
 
