@@ -10,11 +10,15 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 ### Prerequisites
 For this guide I'm assuming you have a Home Assistant Server running on one system, and a separate Raspberry Pi with some form of Debian distro installed and a 1-Wire sensor. You'll need sudo/admin access on these systems. Apart from that, we're going to build this from scratch.  
 
+<br>
+
 ### A Quick MQTT Intro
 A very short background on MQTT to get started.  
 MQTT is a protocol for networked message transmission that has two major components:  
 * Publisher, which sends the MQTT messages to the Broker
 * Broker, which can recieve messages from multiple Publishers. It's like a message hub.  
+
+<br>
 
 ### Process and Goals
 We will set up a Raspberry Pi to read values from 1-wire temperature sensor. The Pi will act as an MQTT Publisher, and will send the temperature readings to a Broker that we set up on our Home Assistant server, which exists on a remote machine. Finally, we grab those values in Node-RED (in Home Assistant) and create temperature entities that we can use anywhere in Home Assistant.  
