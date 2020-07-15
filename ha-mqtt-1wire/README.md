@@ -1,4 +1,4 @@
-# 1-Wire temperature sensor from remote Pi to Home Assistant via MQTT
+# 1-Wire temp sensor from remote Pi to Home Assistant via MQTT
 
 <br>
 
