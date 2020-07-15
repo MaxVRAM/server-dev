@@ -114,7 +114,7 @@ ls
 pi@raspberrypi:/sys/bus/w1/devices $ ls
 28-03109794634b  w1_bus_master1
 ```
-> _If no directories like this appear, it signifies that your Pi isn't reading the sensor. There could be a number of things wrong, but that's outside the scope of this guide._  
+> _If no directories like this appear, your Pi most likely isn't reading the sensor. There could be a number of things wrong, but that's outside the scope of this guide._  
 8. Assuming the sensor is appearing here, navigate into the unique device directory. Since we've only connected a single 1-wire sensor, we can use the wildcard "?" so we don't have to type in or copy/paste the entire set of random numbers:  
 ```bash
 cd 28-?
@@ -340,7 +340,7 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
   - (connection tab) Client ID: node-red-input  
   - (security tab) Username: (the broker user you created when we first installed Mosquitto on HA)
   - (security tab) Password: (the broker password you when we first installed Mosquitto on HA)  
-10. Hit "update" to save your server settings, then make sure the server you just configured is selected. Also make sure the topic field is set to "temperature/1" or whatever you entered in the python script configuration on your Pi. Hit "done".  
+10. Hit "update" to save your server settings, then make sure the server you just configured is selected for the MQTT node. Also make sure the topic field is set to "temperature/1" or whatever you entered in the python script configuration on your Pi. Hit "done".  
 11. The node on the right is the Entity node, this will setup an entity for you to use on your LoveLace dashboard or anywhere else in HA. Double click it and check the following:  
   - Server: Home Assistant  
   - Type: Sensor 
@@ -354,14 +354,14 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)
-_An example of what having 3 sensors would look like in Node-RED._ 
-
-<br>
-<br>
-
 13. Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.  
 > _If the MQTT node and Mosquitto broker are configured correctly, you'll see a green square and "connected" under the node. Likewise, the temperature reading and time of the last message should be displayed under the entity node_  
+
+<br>
+
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
+
+_An example of what having 3 sensors connected would look like in Node-RED._ 
 
 <br>
 
@@ -370,7 +370,7 @@ _An example of what having 3 sensors would look like in Node-RED._
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)  
 
 _It should look something like this._ 
 
