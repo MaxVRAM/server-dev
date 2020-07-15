@@ -406,7 +406,7 @@ _An example of what having 3 sensors connected would look like in Node-RED._
 
 <br>
 
-### CHeck in HA that the entity we've created exists and is receiving data  
+### Check in HA that the entity we've created exists and is receiving data  
 
 14. Check if the entity is listed in your HA entity list. Click the **Configuration** buttom in the bottom right of HA, go to the **Entity** tab, then search for "room_temperature", or whatever you named your entity in Node-RED.  
 15. When the entity appears, click on it then hit the icon that looks like 3 sliders in the top right of the panel. This will display a graph with the sensor's readings.  
