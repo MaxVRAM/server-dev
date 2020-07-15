@@ -109,7 +109,7 @@ sudo apt install python3-pip
 ```bash
 pip3 --version
 ```  
-5. Install the MQTT publishing library for Python:  
+5. Install the MQTT library for Python:  
 ```bash
 pip3 install paho-mqtt
 ```  
