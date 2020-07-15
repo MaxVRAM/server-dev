@@ -260,7 +260,7 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
 Once **Node-RED** is properly installed, we can create what's called a Node-RED "flow". This is effectively a script that we can deploy on our HA server. We're now going to set up the code to read the sensor data we're sending from our Pi.
 
 7. Open up **Node-RED** (it should be an item in the left menu), then click the hamburger menu in the icon top right corner and select **import**.  
-8. Copy the following block and paste it into the Node-RED **import** window:  
+8. Copy the following [Node-RED flow code](mqtt-node-red-receiver.json) and paste it into the Node-RED **import** window:  
 
 <br>
 
