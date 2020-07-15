@@ -8,9 +8,9 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 <br>
 
 ### Prerequisites
-* Home Assistant (HA) Server running on one system
-* A separate Raspberry Pi running some form of Debian distro
-* A 1-Wire sensor  
+* Home Assistant (HA) Server running on a system on your local network (I'm running HA on [hass.io](https://www.home-assistant.io/hassio/))
+* A separate Raspberry Pi running some form of Debian distro (I'm using a Pi Zero W running [Raspberry Pi OS Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/))
+* A 1-Wire sensor. ([I'm using this one](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m))
 
 > You'll need sudo/admin access on these systems. Apart from that, we're going to build this from scratch.  
 
@@ -36,15 +36,6 @@ MQTT is a protocol for networked message transmission that has two major compone
 <br>
 
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
-
-<br>
-
-
-### Test Setup  
-I was using the following setup to create this guide:  
-* Raspberry Pi W running [Raspberry Pi OS (32-bit) Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
-* 1-Wire Temperature Sensor from [Little Bird](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor"). Similar to the DS18B2, only with pullup resistor already fitted.
-* HA setup on a remote Raspberry Pi using [HASS.IO](https://www.home-assistant.io/hassio/)
 
 <br>
 
