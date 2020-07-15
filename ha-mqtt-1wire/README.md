@@ -30,17 +30,20 @@ I was using the following setup to create this guide:
 * 1-Wire Temperature Sensor from [Little Bird](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor"). Similar to the DS18B2, only with pullup resistor already fitted.
 * Home Assistant setup on a remote Raspberry Pi using [HASS.IO](https://www.home-assistant.io/hassio/)
 
+<br>
 
 ### Acknowledgement
 
 This python and service script was mostly pulled from here: https://www.earth.li/~noodles/blog/2018/05/rpi-mqtt-temp.html
 
+<br>
 
 ### Limitations
 
 This code should work fine verbatim while using most standard 1-Wire devices connected to a Raspberry Pi. However, the python script doesn't descriminate between device IDs at all. The script would need to be adjusted if more than one sensor was hooked up to the Pi.
 
-<br><br>
+<br>
+<br>
 
 # Setup Guide
 
@@ -67,6 +70,7 @@ keyfile: privkey.pem
 require_certificate: false
 ```
 > _NOTE: Since we're publishing over the local network, we don't need to worry about the certificates. If you're sending this data over the internet externally, you'll be using the secure ports 8883 and will require certs._  
+
 <br>
 <br>
 
