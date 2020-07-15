@@ -347,7 +347,8 @@ _In Home Assistant, device_class is a handy way to assign common frontend charac
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)
 
 _An example of what having 3 sensors would look like in Node-RED._ 
-<br>
+
+<br><br>
 
 
 12. Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.  
@@ -363,7 +364,8 @@ _If the MQTT node and Mosquitto broker are configured correctly, you'll see a gr
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)
 
 _It should look something like this._ 
-<br>
+
+<br><br>
 
 
 ## Create a LoveLace card to display the readings   
