@@ -234,22 +234,33 @@ device_class: temperature (More on this in a moment)
 icon: mdi:termometer
 unit_of_measurement: °C (You'll need to do some math in your python script if you want to convert this value to F
 ```  
-_In Home Assistant, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)_  
-
-13. **Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.**  
-_If the MQTT node and Mosquitto broker are configured correctly, you'll see a green square and "connected" under the node. Likewise, the temperature reading and time of the last message should be displayed under the entity node_  
-14. **Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.**  
-15. **Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This should display a graph with your readings.**  
+_In Home Assistant, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)._  
 
 <br>
-
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
 _An example of what having 3 sensors would look like in Node-RED._ 
 <br>
 
+
+13. Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.  
+_If the MQTT node and Mosquitto broker are configured correctly, you'll see a green square and "connected" under the node. Likewise, the temperature reading and time of the last message should be displayed under the entity node_  
+
+<br>
+
+14. Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.  
+15. Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This will display a graph with the sensor's readings.  
+
+<br>
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)  
+_It should look something like this._ 
+<br>
+
+
+## Create a LoveLace card to display the readings   
+
 Now you can add the entity to your LoveLace dashboard like any other input.  
 
-Here's my Home Assistant card as a reference for your own dashboar. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). And I"m using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
+Here's my Home Assistant card as a reference for your own dashboar. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
 
 ```yml
 decimals: 1
