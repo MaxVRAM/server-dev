@@ -8,7 +8,7 @@ This setup will get readings from a 1-wire temperature sensor (like [this](https
 <br>
 
 ### Prerequisites
-* Home Assistant (HA) Server running on a system on your local network (I'm running HA on [hass.io](https://www.home-assistant.io/hassio/))
+* Home Assistant (HA) Server running on a system within your local network (I'm running HA on [hass.io](https://www.home-assistant.io/hassio/))
 * A separate Raspberry Pi running some form of Debian distro (I'm using a Pi Zero W running [Raspberry Pi OS Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/))
 * A 1-Wire sensor. ([I'm using this one](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m))
 
