@@ -7,6 +7,9 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 
 <br>
 
+### Prerequisites
+For this guide I'm assuming you have a Home Assistant Server running on one system, and a separate Raspberry Pi with some form of Debian distro installed and a 1-Wire sensor. You'll need sudo/admin access on these systems. Apart from that, we're going to build this from scratch.  
+
 ### A Quick MQTT Intro
 MQTT is a protocol for networked message transmission that has two major components:  
 * Publisher, which sends the MQTT messages to the Broker
@@ -46,7 +49,7 @@ This code should work fine verbatim while using most standard 1-Wire devices con
 <br>
 
 # Setup Guide
-For this guide I'm assuming you have a Home Assistant Server running on one system, and a separate Raspberry Pi with some form of Debian distro installed and a 1-Wire sensor. You'll need sudo/admin access on these systems. Apart from that, we're going to build this from scratch. Let's get this show on the road!  
+Let's get this show on the road!  
 
 <br>
 
