@@ -335,7 +335,7 @@ Server: Home Assistant
 Type: Sensor
 State: <msg.> payload
 
-name: room_temperature (This needs to be unqiue. With this name, the entity will be accessible in HA as "sensor.room_temperature")
+name: room_temperature (This needs to be unqiue. Here, the entity will be named "sensor.room_temperature" in HA)
 device_class: temperature (More on this in a moment)
 icon: mdi:termometer
 unit_of_measurement: °C (You'll need to do some math in your python script if you want to convert this value to F
