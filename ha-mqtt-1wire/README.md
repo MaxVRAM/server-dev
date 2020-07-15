@@ -12,7 +12,7 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 * A separate Raspberry Pi running some form of Debian distro (I'm using a Pi Zero W running [Raspberry Pi OS Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/))
 * A 1-Wire sensor. ([I'm using this one](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m))
 
-> You'll need sudo/admin access on these systems. Apart from that, we're going to build this from scratch.  
+> Apart from the above we're going to build this from scratch. You'll just need sudo/admin access on these systems.  
 
 <br>
 
