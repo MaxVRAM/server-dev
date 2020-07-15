@@ -81,13 +81,13 @@ certfile: fullchain.pem
 keyfile: privkey.pem
 require_certificate: false
 ```
-> _NOTE: Since we're publishing over the local network, we don't need to worry about the certificates. If you're sending this data over the internet externally, you'll be using the secure ports 8883 and will require certs._  
+> _NOTE: Since we're only publishing the MQTT internally over the local network, we don't need to worry about certificates. However, if you're sending this data over the internet, aka externally, you reaaaaaalllly want to be using certificates over the secure port 8883._  
 
 <br>
 <br>
 
 ## Configuring up the environment for the Pi hosting the sensor
-Now, let's get the remote Raspberry Pi setup with the required dependencies and check that it's reading the 1-Wire sensor.  
+Now, let's get the remote Raspberry Pi set up with some dependencies, then check to see if it's reading the 1-Wire sensor we've plugged in.  
 
 <br>
 
