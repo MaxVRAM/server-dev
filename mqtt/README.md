@@ -25,7 +25,29 @@ This code should work fine verbatim while using most standard 1-Wire devices con
 
 ## Setup Guide
 
-### Prep
+
+### Configure Mosquitto Broker on Home Assistant
+
+1. **Open HA and navigate to "Supervisor", then click on the "Add-on store" tab up top.**  
+2. **Seach for "Mosquitto broker", click on the add-on badge and click "INSTALL". Follow the installation information if needed.**  
+3. **After it's installed, go to the "Configuration" tab and setup your user login. It should look something like this:**  
+```
+logins:
+  - username: <someusername>
+    password: <somepassword>
+anonymous: false
+customize:
+  active: false
+  folder: mosquitto
+certfile: fullchain.pem
+keyfile: privkey.pem
+require_certificate: false
+```
+_NOTE: Since we're publishing over the local network, we don't need to worry about the certificates. If you're sending this data over the internet externally, you'll be using the secure ports 8883 and will require certs._  
+
+
+
+### Pi Prep
 
 1. **Mount the 1-wire sensor to the Pi's GPIOs as pictured above**
 2. **Boot up the Pi and enable 1-Wire on the OS using the following command:**  
@@ -65,43 +87,45 @@ _This will print a bunch of hex values, with something like "t=19024" at the end
   
   
 ### Setup The Scripts  
-We'll now setup the script to pull the readings from the sensor and publish it via MQTT.  
+#### MQTT publisher  
+_We'll now setup the script to pull the readings from the sensor and publish it via MQTT._  
   
-10. **Navigate to the directory we'll store the python script in:**  
+1. **Navigate to the directory we'll store the python script in:**  
 `cd /usr/local/bin/mqtt-temp.py`  
 
-11. **Pull the mqtt-temp.py script:**  
+2. **Pull the mqtt-temp.py script:**  
 `sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.py`  
 
-12. **Open the script with nano or vim:**  
+3. **Open the script with nano or vim:**  
 `sudo nano mqtt-temp.py`  
 
-13. **Change the details in the script to match your needs. Notably the following:**  
-* Broker (set to the address IP of your broker)  
-* Port (if you've changed it from the default MQTT port)  
-* Auth (set the username and password to the details registered in your broker)  
-* pub_topic (these need to be unique if you're deploying multiple MQTT publishers)  
+4. **Change the details in the script to match your needs. Notably the following:**  
+* Broker (Set to the address IP of your broker)  
+* Port (If you've changed it from the default MQTT port)  
+* Auth (Change them to the username and password you entered in your Mosquitto Broker configuration)  
+* pub_topic (This is the "name" that will be given to the sensor reading. These need to be unique if you're deploying multiple MQTT publishers)  
 
-14. **Save and exit nano with ctrl-x then press "y"**  
+5. **Save and exit nano with ctrl-x then press "y"**  
 
-Let's setup a service so the script runs when the Pi restarts or if the script exits for some reason.  
+#### Script Service  
+_Let's setup a service so the script runs when the Pi restarts or if the script exits for some reason._  
 
-15. **Navitgate to the service directory:**  
+6. **Navitgate to the service directory:**  
 `cd /lib/systemd/system`  
 
-11. **Pull the mqtt-temp.service script:**  
+7. **Pull the mqtt-temp.service script:**  
 `sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.service`  
 _You shouldn't need to make any changes here_  
 
-12. **Enable the service and start it up just to be sure:**  
+8. **Enable the service and start it up just to be sure:**  
 `sudo systemctl enable mqtt-temp`  
 `sudo systemctl start mqtt-temp`  
 
-13. **Restart the Pi and check if the service is running:**  
-`sudo reboot` 
+9. **Restart the Pi and check if the service is running:**  
+`sudo reboot`  
 `sudo systemctl status mqtt-temp`  
 
-If all went well, you should get something like the following:  
+_If all went well, you should get something like the following:_  
 ```
 ● mqtt-temp.service - MQTT Temperature sensor
    Loaded: loaded (/etc/systemd/system/mqtt-temp.service; enabled; vendor preset: enabled)
@@ -116,3 +140,17 @@ Jul 15 11:40:19 raspberrypi systemd[1]: Started MQTT Temperature sensor.
   
 
 Congratulations! You're now publishing the sensor data to your broker.  
+Let's check Home Assistant to finish the setup.  
+
+
+
+### Setting Up The Sensor Entity Using Node-RED in Home Assistant  
+
+1. **First check that HA is receiving the value by going back to "Supervisor" > "Mosquitto Broker" > "Log".**  
+_You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
+
+2. **If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites)**  
+3. **In HA, click on the HACS tab in the left menu and search for "Node-RED"**  
+4. **Click on the Node-RED badge and install**  
+5. **Restart Home Assistant. You should now have a Node-Red tab on the left menu**  
+6. **Open Node-Red and **
