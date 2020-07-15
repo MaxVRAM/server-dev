@@ -197,14 +197,15 @@ Congratulations! You're now publishing the sensor data to your broker. Let's con
 1. First check that HA is receiving the value by going back to "Supervisor" > "Mosquitto Broker" > "Log".  
 _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
 
-2. If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites).  
-3. In HA, click on the HACS tab in the left menu and search for "Node-RED".  
-4. Click on the Node-RED badge and install.  
-5. Restart Home Assistant. You should now have a Node-Red tab on the left menu.  
-6. In your browser, open the [node red flow json](https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-node-red-receiver.json) and copy the entire block.  
-7. Back in HA, open up Node-RED and in the top right corner click the hamburger menu and select "import".  
-8. Paste the block you copied and hit "import".  
-9. The node on the left is the MQTT node, double click it and add a server with the details you entered when you first installed Mosquito. For instance:  
+2. Install the base Node-RED add-on for HA by clicking "Supervisor" > "Add-on Store" then search for "Node-RED" and follow the installation guide.  
+3. If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites).  
+4. Click on the HACS tab in the left menu and search for "Node-RED". We're now installing an extra integration of Node-RED so we can create entities.  
+5. Click on the Node-RED badge and install.  
+6. Restart Home Assistant. You should now have a Node-Red tab on the left menu.  
+7. In your browser, open the [node red flow json](https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-node-red-receiver.json) and copy the entire block.  
+8. Back in HA, open up Node-RED and in the top right corner click the hamburger menu and select "import".  
+9. Paste the block you copied and hit "import".  
+10. The node on the left is the MQTT node, double click it and add a server with the details you entered when you first installed Mosquito. For instance:  
 ```
 Connections Tab
 ---------------
@@ -217,8 +218,8 @@ Security Tab
 Username: <the broker user you created at the start>
 Password: <the broker password you created at the start>
 ```  
-10. Hit "update" to save your server settings, then make sure the server you just configured is selected, and the topic is the same string you entered in the python script on your Pi. Hit "done"  
-11. The node on the right is the Entity node, this will setup an entity for you to use on your LoveLace dashboard or anywhere else in HA. Double click it and check the following, then hit "okay" to save:  
+11. Hit "update" to save your server settings, then make sure the server you just configured is selected, and the topic is the same string you entered in the python script on your Pi. Hit "done"  
+12. The node on the right is the Entity node, this will setup an entity for you to use on your LoveLace dashboard or anywhere else in HA. Double click it and check the following, then hit "okay" to save:  
 ```
 Name: (feel free to change the node's name for your convenience)
 Server: Home Assistant
@@ -232,14 +233,14 @@ unit_of_measurement: °C (You'll need to do some math in your python script if y
 ```  
 _In Home Assistant, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)_  
 
-12. **Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.**  
+13. **Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.**  
 _If the MQTT node and Mosquitto broker are configured correctly, you'll see a green square and "connected" under the node. Likewise, the temperature reading and time of the last message should be displayed under the entity node_  
-13. **Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.**  
-14. **Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This should display a graph with your readings.**  
+14. **Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.**  
+15. **Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This should display a graph with your readings.**  
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_nnode.jpg)  
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
 _An example of what having 3 sensors would look like in Node-RED._ 
 <br>
 
