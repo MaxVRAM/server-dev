@@ -117,13 +117,16 @@ pi@raspberrypi:/sys/bus/w1/devices $ ls
 28-03109794634b  w1_bus_master1
 ```
   
-8. Enter the unique device directory: _Since we've only connected a single 1-wire sensor, we can use the wildcard "?"_  
+_If no directories like this appear, it signifies that your Pi isn't reading the sensor. There could be a number of things wrong, but that's outside the scope of this guide._  
+
+  
+8. Assuming the sensor is appearing here, navigate into the unique device directory. Since we've only connected a single 1-wire sensor, we can use the wildcard "?" so we don't have to type in or copy/paste the entire set of random numbers:  
 ```bash
 cd 28-?
 ls
 ```  
 
-9. Run "cat" on the w1_save file to display its reading:  
+9. Run "cat" on the w1_slave file to display its reading:  
 ```bash
 cat w1_slave
 ```  
