@@ -1,0 +1,96 @@
+[
+    {
+        "id": "11915a35.ad0356",
+        "type": "tab",
+        "label": "MQTT Temperatures",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7fe46076.99bf88",
+        "type": "mqtt in",
+        "z": "11915a35.ad0356",
+        "name": "",
+        "topic": "temperature/1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "35f8e40a.df5f7c",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "539dec4a.586e34"
+            ]
+        ]
+    },
+    {
+        "id": "539dec4a.586e34",
+        "type": "ha-entity",
+        "z": "11915a35.ad0356",
+        "name": "Room Temperature",
+        "server": "dc09bc1e.a5f7f",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "room_temperature"
+            },
+            {
+                "property": "device_class",
+                "value": "temperature"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:thermometer"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "°C"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "x": 650,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35f8e40a.df5f7c",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Mosquitto",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "node-red-input",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "dc09bc1e.a5f7f",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant",
+        "addon": true
+    }
+]
