@@ -208,6 +208,9 @@ _You should see a log entry saying something like "New connection found from (IP
 7. Open up Node-RED, and in the top right corner click the hamburger menu and select "import".  
 8. Copy the following block and paste it into the Node-RED import window:  
 
+<details>
+  <summary>**Click to display the Node-RED flow code...**</summary>
+  
 ```json
 [
     {
@@ -306,6 +309,8 @@ _You should see a log entry saying something like "New connection found from (IP
     }
 ]
 ```
+  
+</details>
  
 10. The node on the left is the MQTT node, double click it and add a server with the details you entered when you first installed Mosquito. For instance:  
 ```
