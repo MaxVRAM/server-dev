@@ -11,7 +11,7 @@ In this guide, we'll be setting up a Raspberry Pi to read values from 1-wire tem
 
 <br>
 
-![Temperature Sensor](images/lwire_pi.jpg)
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_pi.jpg)
 
 
 ### Test Setup  
@@ -239,7 +239,7 @@ _If the MQTT node and Mosquitto broker are configured correctly, you'll see a gr
 
 <br>
 
-![Temperature Sensor](images/node-red-mqtt.jpg)  
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_nnode.jpg)  
 _An example of what having 3 sensors would look like in Node-RED._ 
 <br>
 
@@ -283,7 +283,7 @@ type: 'custom:mini-graph-card'
 ```  
 <br>
 
-![Temperature Sensor](images/climate_ha.jpg)
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
 
 <br>
 
