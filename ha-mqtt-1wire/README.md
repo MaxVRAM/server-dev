@@ -1,7 +1,4 @@
-# 1-Wire sensor from remote Pi to Home Assistant via MQTT
-
-<br>
-
+# 1-Wire sensor from remote Pi to Home Assistant via MQTT  
 This setup will publish readings from a 1-wire temperature sensor (like [these](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor") from Little Bird) on a Raspberry Pi to Home Assistant via MQTT.  
 MQTT is a protocol for networked message transmission that has two major components:  
 * Publisher
