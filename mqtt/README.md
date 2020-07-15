@@ -23,15 +23,16 @@ This code should work fine verbatim while using most standard 1-Wire devices con
 
 <br><br>
 
-## Setup Guide
+# Setup Guide
 
+<br>
 
-### Configure Mosquitto Broker on Home Assistant
+## Setup Mosquitto Broker on Home Assistant
 
 1. **Open HA and navigate to "Supervisor", then click on the "Add-on store" tab up top.**  
 2. **Seach for "Mosquitto broker", click on the add-on badge and click "INSTALL". Follow the installation information if needed.**  
 3. **After it's installed, go to the "Configuration" tab and setup your user login. It should look something like this:**  
-```
+```yml
 logins:
   - username: <someusername>
     password: <somepassword>
@@ -47,57 +48,83 @@ _NOTE: Since we're publishing over the local network, we don't need to worry abo
 
 <br><br>
 
-### Pi Prep
+## Pi Prep
 
 1. **Mount the 1-wire sensor to the Pi's GPIOs as pictured above**
 2. **Boot up the Pi and enable 1-Wire on the OS using the following command:**  
-`sudo dtoverlay w1-gpio`  
+```bash
+sudo dtoverlay w1-gpio
+```  
 (alternatively, you can use the Raspberry Pi [configuration menu](https://www.raspberrypi-spy.co.uk/2018/02/enable-1-wire-interface-raspberry-pi/))  
 
 2. **Install Python and pip:**  
-`$ sudo apt udpate`  
-`$ sudo apt upgrade`  
-`$ sudo apt install python3`  
-`$ sudo apt install python3-pip`  
+```bash
+sudo apt udpate
+sudo apt upgrade
+sudo apt install python3
+sudo apt install python3-pip
+```  
 
 3. **Check the version to assure installation:**  
-`pip3 --version`  
+```bash
+pip3 --version
+```  
 
 4. **Install the MQTT publishing library for Python:**  
-`pip3 install paho-mqtt`  
+```bash
+pip3 install paho-mqtt
+```  
 
 5. **Check the library is installed - paho-mqtt should appear in the list:**  
-`pip3 list`  
+```bash
+pip3 list
+```  
 
 6. **Reboot the pi:**  
-`sudo reboot`  
+```bash
+sudo reboot
+```  
 
 7. **List the 1-Wire devices currently detected by the Pi:**  
-`cd /sys/bus/w1/devices`  
-`ls`  
+```bash
+cd /sys/bus/w1/devices
+ls
+```  
+
 _The sensor will show up as a directory with a unique device code starting with "28-". For example "28-00000482b243"._  
 
 8. **Enter the unique device directory:** _Since we've only connected a single 1-wire sensor, we can use the wildcard "?"_  
-`cd 28-?`  
-`ls`  
+```bash
+cd 28-?
+ls
+```  
 
 9. **Run "cat" on the w1_save file to display its reading:**  
-`cat w1_slave`  
+```bash
+cat w1_slave
+```  
+
 _This will print a bunch of hex values, with something like "t=19024" at the end. This is your temperature reading! 19°C in this case._  
   
 <br><br>
   
-### Setup The MQTT Publisher  
+## Setup The MQTT Publisher  
 _We'll now setup the script to pull the readings from the sensor and publish it via MQTT._  
   
 1. **Navigate to the directory we'll store the python script in:**  
-`cd /usr/local/bin`  
+```bash
+cd /usr/local/bin
+```  
 
 2. **Pull the mqtt-temp.py script:**  
-`sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.py`  
+```bash
+sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.py
+```  
 
 3. **Open the script with nano or vim:**  
-`sudo nano mqtt-temp.py`  
+```bash
+sudo nano mqtt-temp.py
+```  
 
 4. **Change the details in the script to match your needs. Notably the following:**  
 * Broker (Set to the address IP of your broker)  
@@ -109,26 +136,36 @@ _We'll now setup the script to pull the readings from the sensor and publish it 
 
 <br><br>
 
-### Script Service  
+## Create a Script Service  
 _Let's setup a service so the script runs when the Pi restarts or if the script exits for some reason._  
 
 6. **Navitgate to the service directory:**  
-`cd /lib/systemd/system`  
+```bash
+cd /lib/systemd/system
+```  
 
 7. **Pull the mqtt-temp.service script:**  
-`sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.service`  
+```bash
+sudo wget https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-temp.service
+```  
 _You shouldn't need to make any changes here_  
 
 8. **Enable the service and start it up just to be sure:**  
-`sudo systemctl enable mqtt-temp`  
-`sudo systemctl start mqtt-temp`  
+```bash
+sudo systemctl enable mqtt-temp
+sudo systemctl start mqtt-temp
+```  
 
 9. **Restart the Pi and check if the service is running:**  
-`sudo reboot`  
-`sudo systemctl status mqtt-temp`  
+```bash
+sudo reboot
+```  
+```bash
+sudo systemctl status mqtt-temp
+```  
 
 _If all went well, you should get something like the following:_  
-```
+```bash
 ● mqtt-temp.service - MQTT Temperature sensor
    Loaded: loaded (/etc/systemd/system/mqtt-temp.service; enabled; vendor preset: enabled)
    Active: active (running) since Wed 2020-07-15 11:40:19 AEST; 3s ago
@@ -146,7 +183,7 @@ Congratulations! You're now publishing the sensor data to your broker. Let's con
 
 <br><br>
 
-### Setup Home Asistant Entity Using Node-RED  
+## Setup Home Asistant Entity Using Node-RED  
 
 1. **First check that HA is receiving the value by going back to "Supervisor" > "Mosquitto Broker" > "Log".**  
 _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
