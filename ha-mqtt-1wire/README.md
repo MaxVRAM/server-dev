@@ -41,7 +41,7 @@ MQTT is a protocol for networked message transmission that has two major compone
 
 ### Limitations
 
-This code should work fine verbatim while using most standard 1-Wire devices connected to a Raspberry Pi. However, the python script doesn't descriminate between device IDs at all. The script would need to be adjusted if more than one sensor was hooked up to the Pi.  
+This code should work fine verbatim while using most standard 1-Wire devices connected to a Raspberry Pi. However, the python script doesn't descriminate between device IDs at all. You'd need to do some extra coding in the Python script if you had more than one sensor connected to the Pi.  
 
 <br>
 
