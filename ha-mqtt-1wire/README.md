@@ -3,10 +3,8 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 
 ### A Quick MQTT Intro
 MQTT is a protocol for networked message transmission that has two major components:  
-* Publisher
-* Broker  
-
-The publisher is responsible for sending the MQTT messages to the Broker. The Broker can receive messages from multiple Publishers - it's like a hub.  
+* Publisher, which sends the MQTT messages to the Broker
+* Broker, which can recieve messages from multiple Publishers. It's like a message hub.
 
 <br>
 
