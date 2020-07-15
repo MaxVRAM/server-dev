@@ -75,12 +75,12 @@ Now, let's get the remote Raspberry Pi setup with the required dependencies and 
 
 <br>
 
-1. Mount the 1-wire sensor to the Pi's GPIOs as pictured above
-2. Boot up the Pi and enable 1-Wire on the OS using the following command:  
+1. Install the 1-wire sensor to the Pi's GPIOs as pictured at the top of this page.
+2. Boot up the Pi and enable 1-Wire using the following command:  
 ```bash
 sudo dtoverlay w1-gpio
 ```  
-> (alternatively, you can use the Raspberry Pi [configuration menu](https://www.raspberrypi-spy.co.uk/2018/02/enable-1-wire-interface-raspberry-pi/))  
+> (alternatively, if you're using Raspberry Pi OS like me, you can use the [configuration menu](https://www.raspberrypi-spy.co.uk/2018/02/enable-1-wire-interface-raspberry-pi/), but using the command is just easier)  
 2. Install Python and pip (for our MQTT/sensor script):  
 ```bash
 sudo apt udpate
