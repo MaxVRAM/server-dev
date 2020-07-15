@@ -98,7 +98,7 @@ Now, let's get the remote Raspberry Pi set up with some dependencies, then check
 sudo dtoverlay w1-gpio
 ```  
 > (alternatively, if you're using Raspberry Pi OS like me, you can use the [configuration menu](https://www.raspberrypi-spy.co.uk/2018/02/enable-1-wire-interface-raspberry-pi/), but using the command is just easier)  
-3. Install Python and pip (for our MQTT/sensor script):  
+3. Install Python and pip (so we can run our MQTT/sensor script):  
 ```bash
 sudo apt udpate
 sudo apt upgrade
