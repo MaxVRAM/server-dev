@@ -137,6 +137,11 @@ pi@raspberrypi:/sys/bus/w1/devices $ ls
 cd 28-?
 ls
 ```  
+> _You should get a list similar to this. We're after the w1_slave file:_  
+```bash
+pi@raspberrypi:/sys/bus/w1/devices/28-03109794634b $ ls
+driver  hwmon  id  name  power  subsystem  uevent  w1_slave
+```  
 10. Run "cat" on the w1_slave file to display its reading:  
 ```bash
 cat w1_slave
