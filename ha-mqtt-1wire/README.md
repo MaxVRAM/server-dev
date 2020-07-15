@@ -113,7 +113,7 @@ pip3 --version
 ```bash
 pip3 install paho-mqtt
 ```  
-6. Check the library is installed. Paho-mqtt should appear in the list:  
+6. Check the library is installed. _paho-mqtt_ should appear in the list:  
 ```bash
 pip3 list
 ```  
@@ -121,7 +121,7 @@ pip3 list
 ```bash
 sudo reboot
 ```  
-8. List the 1-Wire devices currently detected by the Pi:  
+8. Check to see if our Pi is reading the sensor by printing 1-Wire devices currently detected:  
 ```bash
 cd /sys/bus/w1/devices
 ls
