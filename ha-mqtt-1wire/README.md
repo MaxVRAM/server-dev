@@ -17,7 +17,7 @@ The publisher is responsible for sending the MQTT messages to the Broker. The Br
 ### Process and Goals
 We will set up a Raspberry Pi to read values from 1-wire temperature sensor. The Pi will act as an MQTT Publisher, and will send the temperature readings to a Broker that we set up on our Home Assistant server, which exists on a remote machine. Finally, we grab those values in Node-RED (in Home Assistant) and create temperature entities that we can use anywhere in Home Assistant.  
 
-In this example, we create a LoveLace card to display the temperatures, but the entity could be used to create any number of automations. I personally use these values to control "dumb" heaters without thermostates, turning them on and off via smart switches.  
+In this example, we create a LoveLace card to display the temperatures, but the entity could be used to create any number of automations. I personally use these values to control "dumb" heaters without thermostates, turning them on and off via smart switches depending on my desired climate.  
 
 <br>
 
