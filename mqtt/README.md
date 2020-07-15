@@ -191,8 +191,16 @@ _If the MQTT node and Mosquitto broker are configured correctly, you'll see a gr
 13. **Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.**  
 14. **Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This should display a graph with your readings.**  
 
-<br><br>
+<br>
+
+![Temperature Sensor](node-red-mqtt.jpg)
+
+<br>
 
 Now you can add the entity to your LoveLace dashboard like any other input.  
 
-<br><br>
+<br>
+
+![Temperature Sensor](climate_ha.jpg)
+
+<br>
