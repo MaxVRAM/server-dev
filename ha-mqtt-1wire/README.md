@@ -86,7 +86,7 @@ require_certificate: false
 <br>
 <br>
 
-## Configuring up the environment for the Pi hosting the sensor
+## Configuring the Raspberry Pi to read and send the sensor data
 Now, let's get the remote Raspberry Pi set up with some dependencies, then check to see if it's reading the 1-Wire sensor we've plugged in.  
 
 <br>
