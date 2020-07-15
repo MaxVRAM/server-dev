@@ -31,7 +31,7 @@ MQTT is a protocol for networked message transmission that has two major compone
 * Make a temperature entity using that value, which we can put to use anywhere in HA.  
 * Create a LoveLace card to display our temperature data.
 
-I personally use these values to automate "dumb" heaters (without thermostats), allowing me to control my room's temperature by turning the heaters on and off depending on my desired temperature using smart switches.  
+> I personally use these values to automate "dumb" heaters (without thermostats), allowing me to control my room's temperature by turning the heaters on and off depending on my desired temperature using smart switches.  
 
 <br>
 
