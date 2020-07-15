@@ -412,9 +412,6 @@ Now you can add the entity to your LoveLace dashboard like any other input.
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
-
-<br>
 
 A very basic setup to display these readings is through a card like this:
 
@@ -431,6 +428,12 @@ unit: C
 <br>
 
 For something a little more advanced, here's a Home Assistant card of my own as a reference to extend your own dashboard. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
+
+<br>
+
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
+
+<br>
 
 <details>
   <summary>Click to display my personal card config...</summary>
