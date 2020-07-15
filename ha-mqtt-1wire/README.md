@@ -12,15 +12,16 @@ For this guide I'm assuming you have a Home Assistant Server running on one syst
 
 <br>
 
-### A Quick MQTT Intro
-A very short background on MQTT to get started.  
+### MQTT?
+An extremely short background on MQTT to get started:  
+
 MQTT is a protocol for networked message transmission that has two major components:  
 * Publisher, which sends the MQTT messages to the Broker
 * Broker, which can recieve messages from multiple Publishers. It's like a message hub.  
 
 <br>
 
-### Process and Goals
+### What are we going to do?
 We will set up a Raspberry Pi to read values from 1-wire temperature sensor. The Pi will act as an MQTT Publisher, and will send the temperature readings to a Broker that we set up on our Home Assistant server, which exists on a remote machine. Finally, we grab those values in Node-RED (in Home Assistant) and create temperature entities that we can use anywhere in Home Assistant.  
 
 In this example, we create a LoveLace card to display the temperatures, but the entity could be used to create any number of automations. I personally use these values to control "dumb" heaters without thermostates, turning them on and off via smart switches depending on my desired climate.  
@@ -40,15 +41,15 @@ I was using the following setup to create this guide:
 
 <br>
 
-### Acknowledgement
+### Limitations
 
-This python and service script was mostly pulled from here: https://www.earth.li/~noodles/blog/2018/05/rpi-mqtt-temp.html
+This code should work fine verbatim while using most standard 1-Wire devices connected to a Raspberry Pi. However, the python script doesn't descriminate between device IDs at all. The script would need to be adjusted if more than one sensor was hooked up to the Pi.  
 
 <br>
 
-### Limitations
+### Acknowledgement
 
-This code should work fine verbatim while using most standard 1-Wire devices connected to a Raspberry Pi. However, the python script doesn't descriminate between device IDs at all. The script would need to be adjusted if more than one sensor was hooked up to the Pi.
+This python and service script was mostly pulled from here: https://www.earth.li/~noodles/blog/2018/05/rpi-mqtt-temp.html  
 
 <br>
 <br>
