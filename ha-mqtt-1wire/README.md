@@ -87,30 +87,30 @@ Now, let's get the remote Raspberry Pi setup with the required dependencies and 
 sudo dtoverlay w1-gpio
 ```  
 > (alternatively, if you're using Raspberry Pi OS like me, you can use the [configuration menu](https://www.raspberrypi-spy.co.uk/2018/02/enable-1-wire-interface-raspberry-pi/), but using the command is just easier)  
-2. Install Python and pip (for our MQTT/sensor script):  
+3. Install Python and pip (for our MQTT/sensor script):  
 ```bash
 sudo apt udpate
 sudo apt upgrade
 sudo apt install python3
 sudo apt install python3-pip
 ```  
-3. Check the version to assure installation:  
+4. Check the version to assure installation:  
 ```bash
 pip3 --version
 ```  
-4. Install the MQTT publishing library for Python:  
+5. Install the MQTT publishing library for Python:  
 ```bash
 pip3 install paho-mqtt
 ```  
-5. Check the library is installed. Paho-mqtt should appear in the list:  
+6. Check the library is installed. Paho-mqtt should appear in the list:  
 ```bash
 pip3 list
 ```  
-6. Reboot the pi:  
+7. Reboot the pi:  
 ```bash
 sudo reboot
 ```  
-7. List the 1-Wire devices currently detected by the Pi:  
+8. List the 1-Wire devices currently detected by the Pi:  
 ```bash
 cd /sys/bus/w1/devices
 ls
@@ -121,12 +121,12 @@ pi@raspberrypi:/sys/bus/w1/devices $ ls
 28-03109794634b  w1_bus_master1
 ```
 > _If no directories like this appear, your Pi most likely isn't reading the sensor. There could be a number of things wrong, but that's outside the scope of this guide._  
-8. Assuming the sensor is appearing here, navigate into the unique device directory. Since we've only connected a single 1-wire sensor, we can use the wildcard "?" so we don't have to type in or copy/paste the entire set of random numbers:  
+9. Assuming the sensor is appearing here, navigate into the unique device directory. Since we've only connected a single 1-wire sensor, we can use the wildcard "?" so we don't have to type in or copy/paste the entire set of random numbers:  
 ```bash
 cd 28-?
 ls
 ```  
-9. Run "cat" on the w1_slave file to display its reading:  
+10. Run "cat" on the w1_slave file to display its reading:  
 ```bash
 cat w1_slave
 ```  
