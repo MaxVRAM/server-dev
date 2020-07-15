@@ -265,7 +265,7 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 <br>
 
 <details>
-  <summary>Click to display the Node-RED flow code...</summary>
+  <summary><strong>Click to display the Node-RED flow code...</strong></summary>
   
 ```json
 [
@@ -449,7 +449,7 @@ For something a little more advanced, here's an HA card of my own as a reference
 <br>
 
 <details>
-  <summary>Click to display my personal card config...</summary>
+  <summary><strong>Click to display my personal card config...</strong></summary>
 
 ```yml
 decimals: 1
