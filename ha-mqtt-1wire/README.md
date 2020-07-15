@@ -237,7 +237,9 @@ unit_of_measurement: °C (You'll need to do some math in your python script if y
 _In Home Assistant, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)._  
 
 <br>
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
+
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)
+
 _An example of what having 3 sensors would look like in Node-RED._ 
 <br>
 
@@ -251,7 +253,9 @@ _If the MQTT node and Mosquitto broker are configured correctly, you'll see a gr
 15. Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This will display a graph with the sensor's readings.  
 
 <br>
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)  
+
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)
+
 _It should look something like this._ 
 <br>
 
