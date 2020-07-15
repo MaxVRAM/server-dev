@@ -204,10 +204,109 @@ _You should see a log entry saying something like "New connection found from (IP
 3. If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites).  
 4. Click on the HACS tab in the left menu and search for "Node-RED". We're now installing an extra integration of Node-RED so we can create entities.  
 5. Click on the Node-RED badge and install.  
-6. Restart Home Assistant. You should now have a Node-Red tab on the left menu.  
-7. In your browser, open the [node red flow json](https://github.com/MaxVRAM/server-dev/raw/master/mqtt/mqtt-node-red-receiver.json) and copy the entire block.  
-8. Back in HA, open up Node-RED and in the top right corner click the hamburger menu and select "import".  
-9. Paste the block you copied and hit "import".  
+6. Restart Home Assistant. You should now have a Node-RED tab on the left menu.  
+7. Open up Node-RED, and in the top right corner click the hamburger menu and select "import".  
+8. Copy the following block and paste it into the Node-RED import window:  
+
+```json
+[
+    {
+        "id": "11915a35.ad0356",
+        "type": "tab",
+        "label": "MQTT Temperatures",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7fe46076.99bf88",
+        "type": "mqtt in",
+        "z": "11915a35.ad0356",
+        "name": "",
+        "topic": "temperature/1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "35f8e40a.df5f7c",
+        "x": 250,
+        "y": 160,
+        "wires": [
+            [
+                "539dec4a.586e34"
+            ]
+        ]
+    },
+    {
+        "id": "539dec4a.586e34",
+        "type": "ha-entity",
+        "z": "11915a35.ad0356",
+        "name": "Room Temperature",
+        "server": "dc09bc1e.a5f7f",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "room_temperature"
+            },
+            {
+                "property": "device_class",
+                "value": "temperature"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:thermometer"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "°C"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "x": 650,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35f8e40a.df5f7c",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Mosquitto",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "node-red-input",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "dc09bc1e.a5f7f",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant",
+        "addon": true
+    }
+]
+```
+ 
 10. The node on the left is the MQTT node, double click it and add a server with the details you entered when you first installed Mosquito. For instance:  
 ```
 Connections Tab
