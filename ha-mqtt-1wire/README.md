@@ -345,6 +345,7 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
   - (security tab) Username: (the broker user you created when we first installed Mosquitto on HA)
   - (security tab) Password: (the broker password you when we first installed Mosquitto on HA)  
 10. Hit "update" to save your server settings, then make sure the server you just configured is selected for the MQTT node. Also make sure the topic field is set to "temperature/1" or whatever you entered in the python script configuration on your Pi. Hit "done".  
+<br>
 11. The node on the right is the Entity node, this will setup an entity for you to use on your LoveLace dashboard or anywhere else in HA. Double click it and check the following:  
   - Server: Home Assistant  
   - Type: Sensor 
