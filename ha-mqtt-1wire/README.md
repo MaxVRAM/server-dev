@@ -35,8 +35,8 @@ MQTT is a protocol for networked message transmission that has two major compone
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
-
+![Home Assistant Card](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
+> _An example Home Assisstant card of multiple temperature readings_
 <br>
 
 ### Limitations
