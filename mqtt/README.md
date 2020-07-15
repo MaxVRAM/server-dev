@@ -1,32 +1,32 @@
-## Raspberry Pi 1-Wire Temperature Sensor MQTT Publishing to Home Assistant
+# Raspberry Pi 1-Wire Temperature Sensor MQTT Publishing to Home Assistant
 
 This setup will publish readings from a 1-wire temperature sensor (like [these](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor") from Little Bird) from a Raspberry Pi to remote MQTT broker. In my case, it was to Home Assistant on another Raspberry Pi on my network.  
 
 ![Temperature Sensor](lb_temp_sensor.jpg)
 
 
-### Test Setup
+## Test Setup
 
 * Raspberry Pi W running Raspberry Pi OS (32-bit) Lite
 * 1-Wire Temperature Sensor from [Little Bird](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor"). Similar to the DS18B2, only with pullup resistor already fitted.
 * Remote Home Assistant (on a remote Raspberry Pi using HASS.IO)
 
 
-### Acknowledgement
+## Acknowledgement
 
 This python and service script was mostly pulled from here: https://www.earth.li/~noodles/blog/2018/05/rpi-mqtt-temp.html
 
 
-### Limitations
+## Limitations
 
 This code should work fine verbatim while using most standard 1-Wire devices connected to a Raspberry Pi. However, it doesn't descriminate between device IDs, so adjustments would be required if more than one sensor was hooked up to the host PI.
 
 
 
-## Setup Guide
+# Setup Guide
 
 
-### Configure Mosquitto Broker on Home Assistant
+## Configure Mosquitto Broker on Home Assistant
 
 1. **Open HA and navigate to "Supervisor", then click on the "Add-on store" tab up top.**  
 2. **Seach for "Mosquitto broker", click on the add-on badge and click "INSTALL". Follow the installation information if needed.**  
@@ -47,7 +47,7 @@ _NOTE: Since we're publishing over the local network, we don't need to worry abo
 
 
 
-### Pi Prep
+## Pi Prep
 
 1. **Mount the 1-wire sensor to the Pi's GPIOs as pictured above**
 2. **Boot up the Pi and enable 1-Wire on the OS using the following command:**  
@@ -86,8 +86,7 @@ _The sensor will show up as a directory with a unique device code starting with 
 _This will print a bunch of hex values, with something like "t=19024" at the end. This is your temperature reading! 19°C in this case._  
   
   
-### Setup The Scripts  
-#### MQTT publisher  
+## Setup The MQTT Publisher  
 _We'll now setup the script to pull the readings from the sensor and publish it via MQTT._  
   
 1. **Navigate to the directory we'll store the python script in:**  
@@ -107,7 +106,7 @@ _We'll now setup the script to pull the readings from the sensor and publish it 
 
 5. **Save and exit nano with ctrl-x then press "y"**  
 
-#### Script Service  
+### Script Service  
 _Let's setup a service so the script runs when the Pi restarts or if the script exits for some reason._  
 
 6. **Navitgate to the service directory:**  
@@ -144,7 +143,7 @@ Let's check Home Assistant to finish the setup.
 
 
 
-### Setting Up The Sensor Entity Using Node-RED in Home Assistant  
+## Setup Home Asistant Entity Using Node-RED  
 
 1. **First check that HA is receiving the value by going back to "Supervisor" > "Mosquitto Broker" > "Log".**  
 _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
