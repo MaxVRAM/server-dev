@@ -5,28 +5,28 @@ This setup will publish readings from a 1-wire temperature sensor (like [these](
 ![Temperature Sensor](lb_temp_sensor.jpg)
 
 
-## Test Setup
+### Test Setup
 
 * Raspberry Pi W running Raspberry Pi OS (32-bit) Lite
 * 1-Wire Temperature Sensor from [Little Bird](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor"). Similar to the DS18B2, only with pullup resistor already fitted.
 * Remote Home Assistant (on a remote Raspberry Pi using HASS.IO)
 
 
-## Acknowledgement
+### Acknowledgement
 
 This python and service script was mostly pulled from here: https://www.earth.li/~noodles/blog/2018/05/rpi-mqtt-temp.html
 
 
-## Limitations
+### Limitations
 
 This code should work fine verbatim while using most standard 1-Wire devices connected to a Raspberry Pi. However, it doesn't descriminate between device IDs, so adjustments would be required if more than one sensor was hooked up to the host PI.
 
+<br><br>
+
+## Setup Guide
 
 
-# Setup Guide
-
-
-## Configure Mosquitto Broker on Home Assistant
+### Configure Mosquitto Broker on Home Assistant
 
 1. **Open HA and navigate to "Supervisor", then click on the "Add-on store" tab up top.**  
 2. **Seach for "Mosquitto broker", click on the add-on badge and click "INSTALL". Follow the installation information if needed.**  
@@ -45,9 +45,9 @@ require_certificate: false
 ```
 _NOTE: Since we're publishing over the local network, we don't need to worry about the certificates. If you're sending this data over the internet externally, you'll be using the secure ports 8883 and will require certs._  
 
+<br><br>
 
-
-## Pi Prep
+### Pi Prep
 
 1. **Mount the 1-wire sensor to the Pi's GPIOs as pictured above**
 2. **Boot up the Pi and enable 1-Wire on the OS using the following command:**  
@@ -85,8 +85,9 @@ _The sensor will show up as a directory with a unique device code starting with 
 `cat w1_slave`  
 _This will print a bunch of hex values, with something like "t=19024" at the end. This is your temperature reading! 19°C in this case._  
   
+<br><br>
   
-## Setup The MQTT Publisher  
+### Setup The MQTT Publisher  
 _We'll now setup the script to pull the readings from the sensor and publish it via MQTT._  
   
 1. **Navigate to the directory we'll store the python script in:**  
@@ -105,6 +106,8 @@ _We'll now setup the script to pull the readings from the sensor and publish it 
 * pub_topic (This is the "name" that will be given to the sensor reading. These need to be unique if you're deploying multiple MQTT publishers)  
 
 5. **Save and exit nano with ctrl-x then press "y"**  
+
+<br><br>
 
 ### Script Service  
 _Let's setup a service so the script runs when the Pi restarts or if the script exits for some reason._  
@@ -136,14 +139,14 @@ _If all went well, you should get something like the following:_
 
 Jul 15 11:40:19 raspberrypi systemd[1]: Started MQTT Temperature sensor.
 ```
-  
 
-Congratulations! You're now publishing the sensor data to your broker.  
-Let's check Home Assistant to finish the setup.  
+<br><br>
 
+Congratulations! You're now publishing the sensor data to your broker. Let's configure an entity in Home Assistant to read the value.  
 
+<br><br>
 
-## Setup Home Asistant Entity Using Node-RED  
+### Setup Home Asistant Entity Using Node-RED  
 
 1. **First check that HA is receiving the value by going back to "Supervisor" > "Mosquitto Broker" > "Log".**  
 _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
@@ -184,8 +187,12 @@ unit_of_measurement: °C (You'll need to do some math in your python script if y
 _In Home Assistant, device_class is a handy way to assign common frontend characteristics to entities. For more information check this [page](https://www.home-assistant.io/integrations/sensor#device-class)_  
 
 12. **Now the time of reckoning. Click the big red "Deploy" button in the top right-hand corner of Node-RED.**  
-_If the MQTT node and Mosquitto broker are configured correctly, you'll see a green square and "connected" under the node_  
-_Likewise, the temperature reading and time of the last message should be displayed under the entity node_  
+_If the MQTT node and Mosquitto broker are configured correctly, you'll see a green square and "connected" under the node. Likewise, the temperature reading and time of the last message should be displayed under the entity node_  
 13. **Check if the entity is listed in your Home Assistant entity list. Click the "Configuration" buttom in the bottom right of HA, click on the "Entity" tab, then search for "room_temperature", or whatever you named your entity in Node-RED.**  
 14. **Click on the entity, then click the 3 sliders icon in the top right of the entity details popup. This should display a graph with your readings.**  
-15. **Now you can add the entity to your LoveLace dashboard like any other input**  
+
+<br><br>
+
+Now you can add the entity to your LoveLace dashboard like any other input.  
+
+<br><br>
