@@ -1,4 +1,4 @@
-# Raspberry Pi 1-Wire Temperature Sensor MQTT Publishing to Home Assistant
+# Raspberry Pi 1-Wire Temperature Sensor MQTT to remote Home Assistant
 
 <br>
 
