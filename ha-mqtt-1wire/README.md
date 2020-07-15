@@ -11,11 +11,13 @@ The publisher is responsible for sending the MQTT messages to the Broker. The Br
 
 <br>
 
-In this guide, we'll be setting up a Raspberry Pi to read values from 1-wire temperature sensor and act as an MQTT publisher. A Broker is setup in Home Assistant on a remote machine that receives the messages and lets up use the temperature readings in our LoveLace dashboard.  
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_pi.jpg)
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_pi.jpg)
+In this guide, we'll be setting up a Raspberry Pi to read values from 1-wire temperature sensor and act as an MQTT publisher. A Broker is setup in Home Assistant on a remote machine that receives the messages and lets up use the temperature readings in our LoveLace dashboard.  
+
+<br>
 
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
 
