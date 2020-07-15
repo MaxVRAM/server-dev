@@ -399,7 +399,7 @@ Now you can add the entity to your LoveLace dashboard like any other input.
 
 <br>
 
-Here's my Home Assistant card as a reference for your own dashboar. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
+Here's my Home Assistant card as a reference for your own dashboard. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
 
 ```yml
 decimals: 1
