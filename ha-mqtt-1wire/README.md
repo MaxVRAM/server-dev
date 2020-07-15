@@ -205,11 +205,14 @@ Congratulations! You're now publishing the sensor data to your broker. Let's con
 1. First check that HA is receiving the value by going back to "Supervisor" > "Mosquitto Broker" > "Log".  
 _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
 
+### Installing Node-RED integrations  
 2. Install the base Node-RED add-on for HA by clicking "Supervisor" > "Add-on Store" then search for "Node-RED" and follow the installation guide.  
 3. If you haven't got it already, install and configure HACS using the [guide](https://hacs.xyz/docs/installation/prerequisites).  
 4. Click on the HACS tab in the left menu and search for "Node-RED". We're now installing an extra integration of Node-RED so we can create entities.  
 5. Click on the Node-RED badge and install.  
 6. Restart Home Assistant. You should now have a Node-RED tab on the left menu.  
+
+### Building the Node-RED flow and HA entity  
 7. Open up Node-RED, and in the top right corner click the hamburger menu and select "import".  
 8. Copy the following block and paste it into the Node-RED import window:  
 
