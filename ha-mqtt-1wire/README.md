@@ -96,7 +96,7 @@ pip3 --version
 ```bash
 pip3 install paho-mqtt
 ```  
-5. Check the library is installed - paho-mqtt should appear in the list:  
+5. Check the library is installed. Paho-mqtt should appear in the list:  
 ```bash
 pip3 list
 ```  
