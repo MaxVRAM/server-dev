@@ -25,7 +25,7 @@ In this guide, we'll be setting up a Raspberry Pi to read values from 1-wire tem
 
 
 ### Test Setup  
-_I was using the following setup to create this guide_  
+I was using the following setup to create this guide:  
 * Raspberry Pi W running [Raspberry Pi OS (32-bit) Lite](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 * 1-Wire Temperature Sensor from [Little Bird](https://www.littlebird.com.au/products/1-wire-digital-temperature-sensor-for-raspberry-pi-assembled-1m "1-wire temperature sensor"). Similar to the DS18B2, only with pullup resistor already fitted.
 * Remote Home Assistant on a remote Raspberry Pi using [HASS.IO](https://www.home-assistant.io/hassio/)
