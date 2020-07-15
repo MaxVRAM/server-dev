@@ -400,8 +400,9 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
 
 _An example of what having 3 sensors connected would look like in Node-RED._  
-_If you're not getting the "connected" message under the MQTT node, then Mosquitto or your MQTT node aren't configured correctly._  
-_If updated values and update times aren't appearing under the entity node, then either the messages aren't being sent from the Pi correctly to Mosquitto, or the MQTT node isn't listening to the correct topic_  
+
+* _If you're not getting the "connected" message under the MQTT node, then Mosquitto or your MQTT node aren't configured correctly._  
+* _If updated values and update times aren't appearing under the entity node, then either the messages aren't being sent from the Pi correctly to Mosquitto, or the MQTT node isn't listening to the correct topic_  
 
 <br>
 
