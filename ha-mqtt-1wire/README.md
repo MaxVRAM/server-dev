@@ -332,6 +332,10 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
   
 </details>
 
+> After pasting this code, you should have a flow like this (how many dudes you know flow like this??):  
+
+![Node-RED Paste](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_nodepaste.jpg)  
+
 <br>
  
 9. The node on the left is the MQTT node, double click it and configure a new server:  
