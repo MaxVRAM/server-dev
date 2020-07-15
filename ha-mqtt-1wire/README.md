@@ -416,7 +416,24 @@ Now you can add the entity to your LoveLace dashboard like any other input.
 
 <br>
 
-Here's my Home Assistant card as a reference for your own dashboard. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
+A very basic setup to display these readings is through a card like this:
+
+```yml
+type: sensor
+entity: sensor.room_temperature
+graph: line
+name: Room Temperature
+icon: 'mdi:thermometer'
+unit: C
+```  
+> With this you should get a simple graph to display your temperature readings as a card in HA.
+
+<br>
+
+For something a little more advanced, here's a Home Assistant card of my own as a reference to extend your own dashboard. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). Also, I'm using the custom card [mini-graph-card](https://github.com/kalkih/mini-graph-card), which is available on HACS.  
+
+<details>
+  <summary>Click to display my personal card config...</summary>
 
 ```yml
 decimals: 1
@@ -452,6 +469,7 @@ show:
 smoothing: true
 type: 'custom:mini-graph-card'
 ```  
+</details>
 
 <br>
 
