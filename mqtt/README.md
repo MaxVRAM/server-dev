@@ -241,3 +241,44 @@ Now you can add the entity to your LoveLace dashboard like any other input.
 ![Temperature Sensor](climate_ha.jpg)
 
 <br>
+
+Here's my Home Assistant card as a reference for your own dashboar. Note that I'm using custom theme colours, so they would need to be either removed or replaced with your own (or hard-coded colour codes). And I"m using the custom card "mini-graph-card", which is available on HACS.
+
+```yml
+decimals: 1
+entities:
+  - color: var(--accent-color)
+    entity: sensor.chris_room_temp
+    name: Chris' Room
+  - color: var(--colour-silver)
+    entity: sensor.zen_room_temp
+    name: Zen
+  - color: var(--colour-asbestos)
+    entity: sensor.melbourne_temp
+    name: Melbourne
+    show_state: true
+  - color: var(--colour-midnightblue)
+    entity: sensor.night
+    name: Night
+    y_axis: secondary
+font_size: 80
+height: 170
+hours_to_show: 72
+line_width: 2
+name: Climate ( 72 hours )
+points_per_hour: 1
+show:
+  extrema: true
+  fill: true
+  icon: false
+  labels: true
+  labels_secondary: false
+  name: true
+  points: false
+smoothing: true
+type: 'custom:mini-graph-card'
+```  
+<br>
+
+
+Happy home automating!!
