@@ -399,9 +399,13 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
 
-_An example of what having 3 sensors connected would look like in Node-RED._ 
+_An example of what having 3 sensors connected would look like in Node-RED._  
+_If you're not getting the "connected" message under the MQTT node, then Mosquitto or your MQTT node aren't configured correctly._  
+_If updated values and update times aren't appearing under the entity node, then either the messages aren't being sent from the Pi correctly to Mosquitto, or the MQTT node isn't listening to the correct topic_  
 
 <br>
+
+### CHeck in HA that the entity we've created exists and is receiving data  
 
 14. Check if the entity is listed in your HA entity list. Click the **Configuration** buttom in the bottom right of HA, go to the **Entity** tab, then search for "room_temperature", or whatever you named your entity in Node-RED.  
 15. When the entity appears, click on it then hit the icon that looks like 3 sliders in the top right of the panel. This will display a graph with the sensor's readings.  
