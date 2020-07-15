@@ -12,7 +12,7 @@ This setup will get readings from a 1-wire temperature sensor (like [these](http
 * A separate Raspberry Pi running some form of Debian distro
 * A 1-Wire sensor  
 
-You'll need sudo/admin access on these systems. Apart from that, we're going to build this from scratch.  
+> You'll need sudo/admin access on these systems. Apart from that, we're going to build this from scratch.  
 
 <br>
 
