@@ -81,7 +81,7 @@ _The sensor will show up as a directory with a unique device code starting with 
 `cd 28-?`  
 `ls`  
 
-9. **Run "cat" on the w1_save file to display it's reading:**  
+9. **Run "cat" on the w1_save file to display its reading:**  
 `cat w1_slave`  
 _This will print a bunch of hex values, with something like "t=19024" at the end. This is your temperature reading! 19°C in this case._  
   
