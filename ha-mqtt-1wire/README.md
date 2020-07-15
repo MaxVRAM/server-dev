@@ -132,7 +132,7 @@ pi@raspberrypi:/sys/bus/w1/devices $ ls
 28-03109794634b  w1_bus_master1
 ```
 > _If no directories like this appear, your Pi most likely isn't reading the sensor. There could be a number of things wrong, but that's outside the scope of this guide._  
-9. Assuming the sensor is appearing here, navigate into the unique device directory. Since we've only connected a single 1-wire sensor, we can use the wildcard "?" so we don't have to type in or copy/paste the entire set of random numbers:  
+9. Assuming the sensor is appearing here, navigate into the unique device directory and use **ls** to print out what's in the directory. Since we've only connected a single 1-wire sensor, we can use the wildcard "?" so we don't have to type in or copy/paste the entire set of random numbers:  
 ```bash
 cd 28-?
 ls
