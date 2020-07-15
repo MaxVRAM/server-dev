@@ -27,7 +27,7 @@ MQTT is a protocol for networked message transmission that has two major compone
 * Set up a Raspberry Pi to read a value from a 1-wire temperature sensor.
 * Configure the Pi as an MQTT Publisher that will send the temperature reading to a Broker.
 * Set up a broker on our remote Home Assistant server to listen to the sensor data.
-* Grab value in Node-RED (on Home Assistant)
+* Grab the value in Node-RED (on Home Assistant)
 * Use a temperature entity using that value, which we can put to use anywhere in Home Assistant.  
 * Create a LoveLace card to display our temperature data.
 
