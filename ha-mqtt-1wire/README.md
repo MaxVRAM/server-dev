@@ -431,10 +431,6 @@ For something a little more advanced, here's a Home Assistant card of my own as 
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
-
-<br>
-
 <details>
   <summary>Click to display my personal card config...</summary>
 
@@ -473,6 +469,10 @@ smoothing: true
 type: 'custom:mini-graph-card'
 ```  
 </details>
+
+<br>
+
+![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
 
 <br>
 <br>
