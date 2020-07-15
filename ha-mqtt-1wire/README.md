@@ -6,6 +6,7 @@ This setup will publish readings from a 1-wire temperature sensor (like [these](
 MQTT is a protocol for networked message transmission that has two major components:  
 * Publisher
 * Broker  
+
 The publisher is responsible for sending the MQTT messages to the Broker. The Broker can receive messages from multiple Publishers - it's like a hub.  
 In this guide, we'll be setting up a Raspberry Pi to read values from 1-wire temperature sensor and act as an MQTT publisher. A Broker is setup in Home Assistant on a remote machine that receives the messages and lets up use the temperature readings in our LoveLace dashboard.  
 
