@@ -5,7 +5,15 @@ This setup will get readings from a 1-wire temperature sensor hooked up to a Ras
 
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_pi.jpg)
 > _My test hardware_  
+
 <br>
+
+
+
+
+<br>
+
+# Info
 
 ### Prerequisites
 * Home Assistant (HA) Server running on a system within your local network (I'm running HA on a Pi 4 using [hass.io](https://www.home-assistant.io/hassio/))
