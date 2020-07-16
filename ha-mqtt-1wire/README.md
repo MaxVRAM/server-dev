@@ -4,7 +4,7 @@ This setup will get readings from a 1-wire temperature sensor hooked up to a Ras
 <br>
 
 ![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_pi.jpg)
-
+> _My test hardware_  
 <br>
 
 ### Prerequisites
@@ -361,9 +361,8 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 
 <br>
 
-> After pasting this code, you should have a flow like this (**how many dudes you know flow like this??**):  
-
-![Node-RED Paste](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_nodepaste.jpg)  
+![Node-RED Flow](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_nodepaste.jpg)  
+> _After pasting this code, you should have a flow like this (**how many dudes you know flow like this??**)_  
 
 <br>
  
@@ -392,9 +391,8 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
-
-_An example of what having 3 sensors connected would look like in Node-RED._  
+![3 Sensors in Node-RED](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_node.jpg)  
+> _An example of what having 3 sensors connected would look like in Node-RED._  
 
 * _If you're not getting the "connected" message under the MQTT node, then Mosquitto or your MQTT node aren't configured correctly._  
 * _If updated values and update times aren't appearing under the entity node, then either the messages aren't being sent from the Pi correctly to Mosquitto, or the MQTT node isn't listening to the correct topic_  
@@ -408,18 +406,15 @@ _An example of what having 3 sensors connected would look like in Node-RED._
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)  
-
-_It should look something like this._ 
+![Entity graph in HA](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_graph.jpg)  
+> _It should look something like this._ 
 
 <br><br>
-
 
 ## Create a LoveLace card to display the readings  
 Now you can add the entity to your LoveLace dashboard like any other input.  
 
 <br>
-
 
 A very basic setup to display these readings is through a card like this:
 
@@ -431,7 +426,7 @@ name: Room Temperature
 icon: 'mdi:thermometer'
 unit: C
 ```  
-> With this you should get a simple graph to display your temperature readings as a card in HA.
+> _With this you should get a simple graph to display your temperature readings as a card in HA._
 
 <br>
 
@@ -480,7 +475,7 @@ type: 'custom:mini-graph-card'
 
 <br>
 
-![Temperature Sensor](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
+![Home Assistant Card](https://raw.githubusercontent.com/MaxVRAM/server-dev/master/ha-mqtt-1wire/images/1wire_card.jpg)
 
 <br>
 <br>
