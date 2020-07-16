@@ -89,35 +89,36 @@ Now, let's get the remote Raspberry Pi set up with some dependencies, then check
 
 1. Physically install the 1-wire sensor to the Pi's GPIOs as pictured at the top of this page.  
 > If you're using a bare sensor without the handy plug-in board like me, you'll most likely need to do some basic electronic circuit setup to get rolling. We're not covering that here, so I'm assuming you've got that side of things sorted.  
-2. With the sensor connected to the GPIOs, boot up the Pi and enable 1-Wire using the following command:  
+2. With the sensor connected to the GPIOs, boot up the Pi and enable 1-Wire by editing the following file:  
 ```bash
-sudo dtoverlay w1-gpio
+sudo nano /boot/config.txt
 ```  
+3. Add the line `dtoverlay=w1-gpio`. Ctl-X then Y to exit and save.
 > (alternatively, if you're using **Raspberry Pi OS** like me, you can use the [configuration menu](https://www.raspberrypi-spy.co.uk/2018/02/enable-1-wire-interface-raspberry-pi/), but using the command is just easier)  
-3. Install Python and pip (so we can run our MQTT/sensor script):  
+4. Install Python and pip (so we can run our MQTT/sensor script):  
 ```bash
 sudo apt udpate
 sudo apt upgrade
 sudo apt install python3
 sudo apt install python3-pip
 ```  
-4. Check the version to assure installation:  
+5. Check the version to assure installation:  
 ```bash
 pip3 --version
 ```  
-5. Install the MQTT library for Python:  
+6. Install the MQTT library for Python:  
 ```bash
 pip3 install paho-mqtt
 ```  
-6. Check the library is installed. **paho-mqtt** should appear in the list:  
+7. Check the library is installed. **paho-mqtt** should appear in the list:  
 ```bash
 pip3 list
 ```  
-7. Reboot the pi:  
+8. Reboot the pi:  
 ```bash
 sudo reboot
 ```  
-8. Check to see if our Pi is reading the sensor by printing 1-Wire devices currently detected:  
+9. Check to see if our Pi is reading the sensor by printing 1-Wire devices currently detected:  
 ```bash
 cd /sys/bus/w1/devices
 ls
@@ -128,7 +129,7 @@ pi@raspberrypi:/sys/bus/w1/devices $ ls
 28-03109794634b  w1_bus_master1
 ```
 > _If no directories like this appear, your Pi most likely isn't reading the sensor. There could be a number of things wrong, but that's outside the scope of this guide._  
-9. Assuming the sensor is appearing here, navigate into the unique device directory and use **"ls"** to print out what's in the directory. Since we've only connected a single 1-wire sensor, we can use the wildcard **"?"** so we don't have to type in or copy/paste the entire set of random numbers:  
+10. Assuming the sensor is appearing here, navigate into the unique device directory and use **"ls"** to print out what's in the directory. Since we've only connected a single 1-wire sensor, we can use the wildcard **"?"** so we don't have to type in or copy/paste the entire set of random numbers:  
 ```bash
 cd 28-?
 ls
@@ -138,7 +139,7 @@ ls
 pi@raspberrypi:/sys/bus/w1/devices/28-03109794634b $ ls
 driver  hwmon  id  name  power  subsystem  uevent  w1_slave
 ```  
-10. Run "cat" on the w1_slave file to display its reading:  
+12. Run "cat" on the w1_slave file to display its reading:  
 ```bash
 cat w1_slave
 ```  
