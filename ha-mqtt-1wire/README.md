@@ -8,12 +8,30 @@ This setup will get readings from a 1-wire temperature sensor hooked up to a Ras
 
 <br>
 
+# Table of Contents
 
-
+   * [Intro](#intro)
+       * [Prerequisites](#prerequisites)
+       * [MQTT?](#mqtt)
+       * [What are we going to do?](#what-are-we-going-to-do)
+       * [Limitations](#limitations)
+       * [Acknowledgement](#acknowledgement)
+   * [Setup Guide](#setup-guide)
+      * [Install Mosquitto broker on HA](#install-mosquitto-broker-on-ha)
+      * [Sensor/publisher setup](#sensorpublisher-setup)
+         * [Pi dependencies](#pi-dependencies)
+         * [Sense-check](#sense-check)
+         * [MQTT publisher script](#mqtt-publisher-script)
+         * [Systemctl service](#systemctl-service)
+      * [Node-RED](#node-red)
+         * [Install Node-RED](#install-node-red)
+         * [Build a flow](#build-a-flow)
+         * [Check your sensor in HA](#check-your-sensor-in-ha)
+      * [Create a Lovelace Card](#create-a-lovelace-card)
 
 <br>
 
-# Info
+# Intro
 
 ### Prerequisites
 * Home Assistant (HA) Server running on a system within your local network (I'm running HA on a Pi 4 using [hass.io](https://www.home-assistant.io/hassio/))
