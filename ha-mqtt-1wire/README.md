@@ -61,11 +61,7 @@ This python and service script was mostly pulled from here: https://www.earth.li
 <br>
 
 # Setup Guide
-Let's get this show on the road!  
-
-<br>
-
-## Setting up Mosquitto Broker on HA
+## Install Mosquitto broker on HA
 First we'll setup the receiving end of our MQTT system in HA.
 
 <br>
@@ -90,10 +86,11 @@ require_certificate: false
 <br>
 <br>
 
-## Configuring the Raspberry Pi to read and send the sensor data
-Now, let's get the remote Raspberry Pi set up with some dependencies, then check to see if it's reading the 1-Wire sensor we've plugged in.  
+## Sensor/publisher setup  
+Now, let's get the remote Raspberry Pi set up with some dependencies, check to see if it's reading the 1-Wire sensor we've plugged in, then publish the value to our MQTT broker.  
 
-<br>
+### Pi dependencies  
+We need to do some things before we dig in.  
 
 1. Physically install the 1-wire sensor to the Pi's GPIOs as pictured at the top of this page.  
 > If you're using a bare sensor without the handy plug-in board like me, you'll most likely need to do some basic electronic circuit setup to get rolling. We're not covering that here, so I'm assuming you've got that side of things sorted.  
@@ -124,6 +121,11 @@ pip3 list
 ```bash
 sudo reboot
 ```  
+<br>
+
+### Sense-check  
+Let's find out if everything's working before moving on.  
+
 8. Check to see if our Pi is reading the sensor by printing 1-Wire devices currently detected:  
 ```bash
 cd /sys/bus/w1/devices
@@ -157,12 +159,9 @@ e8 00 55 05 7f a5 a5 66 16 : crc=16 YES
 e8 00 55 05 7f a5 a5 66 16 t=14500
 ``` 
 <br>
-<br>
   
-## Setting up the MQTT Publisher  
-It's time to get that MQTT/sensor script running so we can pull the readings from the sensor and publish it to our Broker.  
-
-<br>
+### MQTT publisher script  
+It's time to get the MQTT/sensor script running to pull the readings from the sensor and publish it to our broker.  
   
 1. Navigate to the directory that we'll store the python script in:  
 ```bash
@@ -184,10 +183,9 @@ sudo nano mqtt-temp.py
 5. Save and exit nano with ctrl-x then press "y"  
 
 <br>
-<br>
 
-## Create a Script Service  
-For ultimate convenience, we want that Python script we just wrote to run when the Pi restarts or in case the script exits for some reason.  
+### Systemctl service  
+This step is optional, but will make your life less complicated. For ultimate convenience, we will make the Python script run when the Pi restarts or in case the script exits for some reason.  
 
 <br>
 
@@ -232,15 +230,15 @@ Congratulations! You're now publishing the sensor data to your broker. Let's con
 <br>
 <br>
 
-## Setup Home Asistant Entity Using Node-RED  
+## Node-RED 
 Now that the remote Raspberry Pi and sensor are setup, we can finally focus on the HA side of things.
 
 1. First, let's check that HA is receiving the temperature value by going to **Supervisor** > **Mosquitto Broker** > **Log**.  
-> _You should see a log entry saying something like "New connection found from (IP) on port 1883."_  
+> _You should see a log entry saying something like "New connection found from (IP) on port 1883." Note that the way we wrote our publisher script means the sensor will **connect to the broker > publish the value > disconnect from the broker**. Because of this, over time the broker log will end up displaying lots of connect/disconnect messages from the same IP, so don't be alarmed._  
 
 <br>
 
-### Installing Node-RED integrations  
+### Install Node-RED  
 **Node-RED** is an awesome node-based programming environment we can use inside HA to create complex interactive systems.  
 
 2. Install the base Node-RED add-on for HA by clicking "Supervisor" > "Add-on Store" then search for "Node-RED" and follow the installation guide.  
@@ -254,7 +252,7 @@ Now that the remote Raspberry Pi and sensor are setup, we can finally focus on t
 
 <br>
 
-### Building the Node-RED flow and HA entity  
+### Build a flow  
 Once **Node-RED** is properly installed, we can create what's called a Node-RED "flow". This is effectively a script that we can deploy on our HA server. We're now going to set up the code to read the sensor data we're sending from our Pi.
 
 7. Open up **Node-RED** (it should be an item in the left menu), then click the hamburger menu in the icon top right corner and select **import**.  
@@ -406,7 +404,8 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 
 <br>
 
-### Check in HA that the entity we've created exists and is receiving data  
+### Check your sensor in HA
+Just quickly, let's check that Node-RED has created the entity in HA, and the the value is being received.  
 
 14. Check if the entity is listed in your HA entity list. Click the **Configuration** buttom in the bottom right of HA, go to the **Entity** tab, then search for "room_temperature", or whatever you named your entity in Node-RED.  
 15. When the entity appears, click on it then hit the icon that looks like 3 sliders in the top right of the panel. This will display a graph with the sensor's readings.  
@@ -418,7 +417,7 @@ Once **Node-RED** is properly installed, we can create what's called a Node-RED 
 
 <br><br>
 
-## Create a LoveLace card to display the readings  
+## Create a Lovelace Card 
 Now you can add the entity to your LoveLace dashboard like any other input.  
 
 <br>
